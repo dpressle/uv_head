@@ -80,12 +80,13 @@ board.on("ready", function() {
           minVoltage = outputVoltage;//.toFixed(2);
           console.log('Calibration process is done, min voltage set to', minVoltage);
       }
-        var uvIntensity = mapfloat(outputVoltage, minVoltage, 2.8, 0.0, 15.0);
-        //console.log('UV Intensity: ', uvIntensity);
-        //uvIntensity = Math.round(uvIntensity);
-        //console.log(getDateString());
-        // write to csv file writer
-        writer.write([getDateString(), uvIntensity.toFixed(3)])
+      var uvIntensity = mapfloat(outputVoltage, minVoltage, 2.8, 0.0, 15.0);
+      //uvIntensity = Math.round(uvIntensity);
+      //console.log(getDateString());
+      console.log('UV Intensity: ', uvIntensity.toFixed(3));
+
+      // write to csv file writer
+      writer.write([getDateString(), uvIntensity.toFixed(3)])
     });
 
     ref_3V3.on("data", function() { 
