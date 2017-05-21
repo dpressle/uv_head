@@ -4,7 +4,7 @@
   "description": "",
   "main": "uvsensor.js",
   "dependencies": {
-    "csv-write-stream": "^2.0.0",
+    "fast-csv": "^2.4.0",
     "johnny-five": "^0.10.6"
   },
   "devDependencies": {},
