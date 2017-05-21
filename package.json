@@ -1,11 +1,11 @@
 {
   "name": "uv_head",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "uvsensor.js",
   "dependencies": {
     "fast-csv": "^2.4.0",
-    "johnny-five": "^0.10.6"
+    "johnny-five": "^0.10.13"
   },
   "devDependencies": {},
   "scripts": {
