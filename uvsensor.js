@@ -97,7 +97,7 @@ function action_func() {
     testFiles = fs.readdirSync(TEST_DIR_NAME);
   } catch (e) {
     // cannot read files from dir exit with error
-    console.error("error reading json directory", TEST_DIR_NAME);
+    console.error("error reading tests directory", TEST_DIR_NAME);
     process.exit(1);
   }
   // if files found
@@ -135,16 +135,14 @@ function action_func() {
               var uvIntensityNow = uvIntensity.toFixed(3);
               jsonContent[index].Date = getDateString();
               jsonContent[index].Uv = uvIntensityNow;
-              console.log("Test ended, UV value saved", uvIntensityNow);
-              console.log('');
+              csv.writeToPath(csvFile, jsonContent, { headers: true })
+                  .on("finish", function() {
+                    console.log("Test ended, UV value saved", uvIntensityNow);
+                    console.log('');
+                  });
               index++;
               if (index == jsonContent.length) {
-                csv.writeToPath(csvFile, jsonContent, { headers: true })
-                  .on("finish", function() {
-                    console.log("done!");
-                    rl.close();
-                  });
-                  
+                rl.close();
               } else {
                 console.log("Runnig test case: " + jsonContent[index].Frame + ", " + jsonContent[index].Index + ", " + jsonContent[index].Coating + ", " + jsonContent[index].Direction);
                 console.log("Press enter to start, press enter again to stop and move to next test.");
